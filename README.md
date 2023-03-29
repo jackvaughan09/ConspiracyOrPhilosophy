@@ -54,25 +54,25 @@ To top things off, I created some sentiment analysis scores for the selftext and
 
 My exploration of the collected dataset revealed that the sentiment scores, post/title length and word counts were all roughly the same across classes.  r/Conspiracy posts did tend to have a more negative overtone, and r/Philosophy posts tended to score higher in ********compound******** (a composite for positive, neutral, and negativity scores), but these were marginal differences.
 
-![Untitled](Conspiracy%20or%20Philosophy%20971689619ac34483909ef4e0a2ebcb5d/Untitled.png)
+![Mean Sentiment by Subreddit](images/mean_sent_by_subR.png)
 
 Furthermore, the aforementioned features held very little correlation with the target class.
 
-![Untitled](Conspiracy%20or%20Philosophy%20971689619ac34483909ef4e0a2ebcb5d/Untitled%201.png)
+![Feature-Target Correlation Matrix](images/feature_target_corr.png)
 
 Most interesting in the exploratory analysis were the word and n-gram counts (n=3, 4) for each subreddit.
 
-![Untitled](Conspiracy%20or%20Philosophy%20971689619ac34483909ef4e0a2ebcb5d/Untitled%202.png)
+![Phil top 10 words](images/top10_words_rphil.png)
 
-![Untitled](Conspiracy%20or%20Philosophy%20971689619ac34483909ef4e0a2ebcb5d/Untitled%203.png)
+![Consp top 10 words](images/top10_words_rconsp.png)
 
  The top 1-grams are mostly what you'd expect. I find it both strikingly accurate and slightly comical that the second most common word in the conspiracy class is vaccine, with covid taking 4th place. It's as spot on as you could be.
 
 Top 10 words in the philosophy class are all pretty standard, though it is interesting to note that moral/ethical philosophy is the most represented via these words (as opposed to other types like metaphysics, epistemology, etc.).
 
-![Untitled](Conspiracy%20or%20Philosophy%20971689619ac34483909ef4e0a2ebcb5d/Untitled%204.png)
+![Phil top ngrams](images/10ngram_phil.png)
 
-![Untitled](Conspiracy%20or%20Philosophy%20971689619ac34483909ef4e0a2ebcb5d/Untitled%205.png)
+![Consp top ngrams](images/10ngram_consp.png)
 
 For the Ngrams, we see relatively uninteresting results in r/AskPhilosophy. Many of the most common strings of a few words are just related to subreddit rule queries and links to the omnipresent (at least in the philosophy world) Stanford Encyclopedia.
 
@@ -116,7 +116,7 @@ The best SVM found after hyper-parameter tuning was a sigmoid kernel implementat
 | Accuracy |  |  | 0.89 | 2492 |
 | Weighted Avg | 0.89 | 0.89 | 0.89 | 2492 |
 
-![Untitled](Conspiracy%20or%20Philosophy%20971689619ac34483909ef4e0a2ebcb5d/Untitled%206.png)
+![SVM Confusion Matrix](images/svm_cm.png)
 
 The SVM model achieved an overall accuracy of 89%, which means that it correctly classified 89% of the posts in the test dataset.
 
@@ -134,9 +134,9 @@ In summary, the model seems to perform well, with high precision and recall scor
 
 ### Model 2: Multinomial Naive Bayes
 
-![Untitled](Conspiracy%20or%20Philosophy%20971689619ac34483909ef4e0a2ebcb5d/Untitled%207.png)
+![MNB ConfMat](images/nb_cm.png)
 
-![Untitled](Conspiracy%20or%20Philosophy%20971689619ac34483909ef4e0a2ebcb5d/Untitled%208.png)
+![MNB Class report](images/nb_classrep.png)
 
 This model has an overall accuracy of 89%, which is equal to the SVM model. The recall score is higher for AskPhilosophy, but lower for Conspiracy. The F1-scores are similar, with a slight edge to the NB model.
 
